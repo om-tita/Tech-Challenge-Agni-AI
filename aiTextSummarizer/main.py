@@ -1,35 +1,26 @@
-import sys
-from utils import text_summarizer
-from models import User, Session, Event
-from controllers import AuthController, MessageController, DepartmentController, EventController
+import streamlit as st
+from utils.helper import load_text_file
+from models.summarizer import summarize_text
 
-def main():
-    print("Welcome to Kurakani - Employee Communication App")
-    # Initialize controllers
-    auth_controller = AuthController()
-    message_controller = MessageController()
-    department_controller = DepartmentController()
-    event_controller = EventController()
+# Title of the app
+st.title('AI Text Summarizer')
 
-    # Main application loop
-    while True:
-        print("1. Login")
-        print("2. Register")
-        print("3. Exit")
-        choice = input("Select an option: ")
+# User input section
+st.header('Paste your text or upload a .txt file')
+text_input = st.text_area('Enter text here')
+file_upload = st.file_uploader('Or upload a .txt file', type=['txt'])
 
-        if choice == '1':
-            employee_id = input("Enter Employee ID: ")
-            phone_number = input("Enter Phone Number: ")
-            auth_controller.login(employee_id, phone_number)
-        elif choice == '2':
-            # Registration logic
-            pass
-        elif choice == '3':
-            print("Exiting the application...")
-            sys.exit()
-        else:
-            print("Invalid choice. Please try again.")
+if file_upload is not None:
+    text_input = load_text_file(file_upload)
 
-if __name__ == '__main__':
-    main()
+# Summary length selection
+summary_length = st.selectbox('Select summary length', ['Short', 'Medium', 'Long'])
+
+# Summarization button
+if st.button('Summarize'):
+    if text_input:
+        summary = summarize_text(text_input, summary_length)
+        st.subheader('Summary')
+        st.write(summary)
+    else:
+        st.warning('Please enter text or upload a file to summarize.')
