@@ -1,7 +1,7 @@
 # AI Text Summarizer
 
-## Project Description
-The AI Text Summarizer is a simple web application built with Streamlit. It allows users to paste lengthy text or upload a .txt file, and the app summarizes it into concise, key points using a pre-trained language model, OpenAI's GPT. This app provides a quick and easy way to distill essential information from large text inputs.
+## Project Overview
+The AI Text Summarizer is a simple web application built with Streamlit that allows users to paste lengthy text or upload a .txt file. The application summarizes the input text into concise key points using OpenAI's GPT language model. This tool provides a quick and easy way to distill essential information from large text inputs.
 
 ## Key Features
 1. **User Input**: Users can paste text or upload a .txt file.
@@ -15,7 +15,7 @@ The AI Text Summarizer is a simple web application built with Streamlit. It allo
 - **Language**: Python
 
 ## Installation
-To run this application, you need to have Python installed. You can install the required packages using the following command:
+To run this application, you need to have Python installed. You can install the required dependencies using the following command:
 
 ```bash
 pip install -r requirements.txt
@@ -29,7 +29,7 @@ streamlit run main.py
 ```
 
 ## Contributing
-If you would like to contribute to this project, please read the [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines.
+Contributions are welcome! Please feel free to submit a pull request or open an issue.
 
 ## License
 This project is licensed under the MIT License.

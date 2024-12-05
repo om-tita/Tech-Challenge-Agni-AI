@@ -10,8 +10,7 @@ class TextSummarizer:
             model='gpt-3.5-turbo',
             messages=[{'role': 'user', 'content': prompt}]
         )
-        summary = response['choices'][0]['message']['content']
-        return summary
+        return response['choices'][0]['message']['content']
 
     def _create_prompt(self, text, summary_length):
         length_map = {
